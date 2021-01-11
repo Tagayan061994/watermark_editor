@@ -1,14 +1,5 @@
 import styled from "styled-components";
 
-
-export const MainWrapper = styled.div`
-  width:100%;
-  background-color:#FFFFFF;
-  display: flex;
-  border-top: 1px solid #DEE3F0;
-  border-bottom: 1px solid #DEE3F0;
-  `;
-
 export const SideBar = styled.div`
   width:35%;
   background-color: #FFFFFF;
@@ -61,4 +52,3 @@ export const TextButton = styled.button`
   padding:3% 8%;
   cursor: pointer;
 `;
-

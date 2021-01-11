@@ -3,6 +3,17 @@
   padding: 0 0 0 0;
   box-sizing: border-box;
 }
+@font-face {
+  font-family: "Montserrat";
+  src: url("../src/fonts/Montserrat-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Montserrat-Medium";
+  src: url("../src/fonts/Montserrat-Medium.ttf") format("truetype");
+}
+@import url("https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Potta+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap");
 
 body {
   width: 100%;
@@ -11,6 +22,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Manifiesto";
 }
 
 #root {

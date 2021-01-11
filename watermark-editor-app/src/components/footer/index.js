@@ -1,12 +1,11 @@
+import React from 'react';
 import { FooterWrapper, CancelButton, FooterButton } from "./styled";
 
-const Footer = () => {
+export const Footer = React.memo(({ switchToSidebar }) => {
     return (
         <FooterWrapper>
-            <CancelButton>Cancel</CancelButton>
+            <CancelButton onClick={() => switchToSidebar("DefaultSideBar")}>Cancel</CancelButton>
             <FooterButton>Done</FooterButton>
         </FooterWrapper>
     );
-}
-
-export default Footer;
+});

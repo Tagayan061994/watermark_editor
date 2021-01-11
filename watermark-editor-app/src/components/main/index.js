@@ -1,37 +1,24 @@
-import { useState } from "react";
-import ImageSideBar from "../sidbar/imageSideBar";
-import {
-  MainWrapper,
-  SideBar,
-  Content,
-  UploadButton,
-  Icon,
-  Separator,
-  TextButton,
-  EditorDesk,
-} from "./style";
-
-const Mian = () => {
-  const [state, setstate] = useState(false);
-  return (
-    <MainWrapper>
-      {!state ? (
-        <SideBar>
-          <UploadButton onClick={() => setstate(!state)}>
-            <Icon src="../../assets/upload.svg" alt="" />
-            UPLOAD YOUR LOGO
-          </UploadButton>
-          <Separator />
-          <TextButton>Type text</TextButton>
-        </SideBar>
-      ) : (
-        <ImageSideBar />
-      )}
-      <Content>
-        <EditorDesk></EditorDesk>
-      </Content>
-    </MainWrapper>
-  );
+import React from "react";
+import { ImageSideBar } from "../sidbar/imageSideBar";
+import { DefaultSideBar } from "../sidbar/defaultSideBar";
+import { MainWrapper } from "./style";
+import { TextSideBar } from "../sidbar/textSideBar";
+import { Content } from "../content/index";
+import { SideBar } from "../sidbar/defaultSideBar/style";
+export const Main = ({
+    defaultSidebar,
+    imgSidebar,
+    textSidebar,
+    switchToSidebar,
+}) => {
+    return (
+        <MainWrapper>
+            {defaultSidebar ? (
+                <DefaultSideBar switchToSidebar={switchToSidebar} />
+            ) : null}
+            {imgSidebar ? <ImageSideBar /> : null}
+            {textSidebar ? <TextSideBar /> : null}
+            <Content />
+        </MainWrapper>
+    );
 };
-
-export default Mian;
