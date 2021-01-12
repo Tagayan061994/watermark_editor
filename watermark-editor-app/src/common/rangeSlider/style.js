@@ -12,5 +12,5 @@ export const ColorLabel = styled.label`
   text-align: left;
   color: #7683a8;
   align-self: center;
-  margin-bottom: 9%;
+  margin-bottom: 4%;
 `;

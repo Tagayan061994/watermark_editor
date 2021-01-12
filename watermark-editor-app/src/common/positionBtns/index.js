@@ -2,6 +2,7 @@ import React from 'react';
 import * as Styled from "./style";
 
 export const PositionBtns = React.memo(() => {
+ 
     return (
         <>
             <Styled.Label>Position</Styled.Label>

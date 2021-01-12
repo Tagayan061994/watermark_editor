@@ -38,3 +38,7 @@ button {
 input[type="file"] {
   display: none;
 }
+
+input {
+  outline: none;
+}

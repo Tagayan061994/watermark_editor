@@ -1,12 +1,13 @@
 import { useState } from "react";
+import * as Styled from "./style";
 import avatarImg from "../../../assets/BeeTV.png";
-import { PositionBtns } from "../../../common/positionBtns";
 import { RangeSlider } from "../../../common/rangeSlider";
 import { ToggleButton } from "../../../common/toggleButton";
-import * as Styled from "./style";
+import { PositionBtns } from "../../../common/positionBtns";
 
 export const ImageSideBar = () => {
   const [switchSingleToTiled, setSingleToTiled] = useState(true);
+
   return (
     <Styled.ImageSideBarWrapper>
       <Styled.CircleSection>
@@ -28,11 +29,11 @@ export const ImageSideBar = () => {
         {switchSingleToTiled ? (
           <PositionBtns />
         ) : (
-            <Styled.SliderSection>
-              <RangeSlider labelName="Padding" />
-            </Styled.SliderSection>
-          )}
+          <Styled.SliderSection>
+            <RangeSlider labelName="Padding" />
+          </Styled.SliderSection>
+        )}
       </Styled.PositionSection>
-    </Styled.ImageSideBarWrapper >
+    </Styled.ImageSideBarWrapper>
   );
 };

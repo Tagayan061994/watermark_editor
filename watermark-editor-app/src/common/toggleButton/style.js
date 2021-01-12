@@ -35,11 +35,12 @@ export const ToggleSwitch = styled.div`
     border-radius: 20px;
     position: absolute;
     top: 0;
-    right: 0;
+    right: 1;
     transition: right 0.2s ease-in;
   }
   input[type="checkbox"]:checked + label .toggle-track:before {
     background: white;
     right: 15px;
+    right: 0;
   }
 `;

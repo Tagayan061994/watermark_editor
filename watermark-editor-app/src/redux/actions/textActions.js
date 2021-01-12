@@ -30,3 +30,10 @@ export const setTextMode = (event) => {
         payload: event.target.value
     }
 }
+
+export const setTextPosition = (position) => {
+    return {
+        type: "SET_TEXT_POSITION",
+        payload: position
+    }
+}

@@ -11,13 +11,14 @@ export const ResizeableDiv = React.memo(
             x: 150,
             y: 205,
             width: "auto",
-            height: 32,
+            height: "auto",
           }}
           minWidth={5}
           minHeight={9}
           bounds="window"
           style={{
             border: "1px solid blue",
+            overflow: "hidden",
           }}
         >
           {textInput && (

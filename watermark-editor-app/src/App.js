@@ -24,7 +24,6 @@ function App() {
       settextSidebar(false);
     }
   }
-
   return (
     <div className="App">
       <Header />
