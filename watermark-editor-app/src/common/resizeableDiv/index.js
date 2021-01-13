@@ -1,37 +1,51 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect } from "react";
 import * as Styled from "./style";
-import { Rnd } from "react-rnd";
+import { useDispatch } from "react-redux";
 
 export const ResizeableDiv = React.memo(
-  ({ textInput, textSize, textColor, textFont }) => {
+  ({ child, size, color, font, position, parentRef }) => {
+    const dispatch = useDispatch();
+    const childrenRef = useRef(null);
+    let parentHeight, parentWidth, childrenHeight, childrenWidth;
+
+    useEffect(() => {
+      if (parentRef.current) {
+        parentHeight = parentRef.current.offsetHeight;
+        parentWidth = parentRef.current.offsetWidth;
+      }
+      if (childrenRef.current) {
+        childrenHeight = childrenRef.current.offsetHeight;
+        childrenWidth = childrenRef.current.offsetWidth;
+      }
+    }, [parentRef, childrenRef]);
+
     return (
-      <div>
-        <Rnd
-          default={{
-            x: 150,
-            y: 205,
-            width: "auto",
-            height: "auto",
-          }}
-          minWidth={5}
-          minHeight={9}
-          bounds="window"
-          style={{
-            border: "1px solid blue",
-            overflow: "hidden",
-          }}
-        >
-          {textInput && (
-            <Styled.ResizeText
-              textSize={textSize}
-              textColor={textColor}
-              textFont={textFont}
-            >
-              {textInput}
-            </Styled.ResizeText>
-          )}
-        </Rnd>
-      </div>
+      <Styled.ResizableWrapper
+        default={{
+          x: 0,
+          y: 0,
+          width: "auto",
+          height: "auto",
+        }}
+        position={{ x: position.x, y: position.y }}
+        onDragStop={(e, currentPos) => {
+          dispatch({ type: "SET_TEXT_POSITION", payload: currentPos });
+        }}
+        minWidth={5}
+        minHeight={9}
+        bounds="parent"
+      >
+        {typeof child === "string" && (
+          <Styled.ResizeDiv
+            size={size}
+            color={color}
+            font={font}
+            ref={childrenRef}
+          >
+            {child}
+          </Styled.ResizeDiv>
+        )}
+      </Styled.ResizableWrapper>
     );
   }
 );

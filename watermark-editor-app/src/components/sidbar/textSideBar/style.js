@@ -18,7 +18,7 @@ export const InputSection = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  padding: 11% 3% 5% 3%;
+  padding: 11% 7% 7% 7%;
   display: flex;
   flex-direction: column;
 `;
@@ -31,7 +31,7 @@ export const TextInput = styled.input`
   font-family: ${(props) => props.textFont};
   border-radius: 10px;
   overflow: hidden;
-  padding: 5% 19% 6% 15%;
+  padding: 10px 20px;
   outline: none;
   margin-top: 5%;
 `;

@@ -4,12 +4,14 @@ export const setTextValue = (event) => {
         payload: event.target.value
     };
 }
+
 export const setTextSize = (event) => {
     return {
         type: "SET_TEXT_SIZE",
         payload: event.target.value
     };
 }
+
 export const setTextColor = (event) => {
     return {
         type: "SET_TEXT_COLOR",

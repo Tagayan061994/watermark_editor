@@ -28,7 +28,7 @@ export const PosBtnWrapper = styled.div`
 export const PosBtn = styled.button`
   border: none;
   background: transparent linear-gradient(180deg, #fefeff 0%, #eff3ff 100%);
-  color: white;
+  background: ${props => props.clicked ? "#377DFF" : "white"};
   padding: 4.5%;
   text-align: center;
   text-decoration: none;
@@ -41,8 +41,8 @@ export const PosBtnDecor = styled.span`
   display: block;
   width: 25px;
   height: 25px;
-  border-left: 8px solid #bdcffb;
-  border-top: 8px solid #bdcffb;
+  border-left: 8px solid ${props => props.clicked ? "white" : "#BDCFFB"};
+  border-top: 8px solid ${props => props.clicked ? "white" : "#BDCFFB"};
   border-radius: 2px;
   transform: ${(props) => `rotate(${props.degree}deg)`};
 `;
