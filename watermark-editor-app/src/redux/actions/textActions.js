@@ -39,3 +39,10 @@ export const setTextPosition = (position) => {
         payload: position
     }
 }
+
+export const setTextPadding = (event) => {
+    return {
+        type: "SET_TEXT_PADDING",
+        payload: event.target.value
+    }
+}

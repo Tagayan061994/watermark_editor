@@ -7,7 +7,7 @@ const initialState = {
     padding: 10,
     position: {
         x: 150,
-        y: 150
+        y: 150,
     },
 };
 
@@ -44,8 +44,13 @@ export const textConfigs = (state = initialState, action) => {
                 position: {
                     ...state.position,
                     x: action.payload.x,
-                    y: action.payload.y
+                    y: action.payload.y,
                 },
+            };
+        case "SET_TEXT_PADDING":
+            return {
+                ...state,
+                padding: action.payload,
             };
         default:
             return state;

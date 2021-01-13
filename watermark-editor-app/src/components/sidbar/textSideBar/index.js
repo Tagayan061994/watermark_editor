@@ -1,16 +1,19 @@
 import React from "react";
 import * as Styled from "./style";
+import { SelectColor } from "./selectColor";
 import { RangeSlider } from "../../../common/rangeSlider";
 import { ToggleButton } from "../../../common/toggleButton";
 import { PositionBtns } from "../../../common/positionBtns";
 import { useDispatch, useSelector } from "react-redux";
-import { getText, getMode, getFont } from "../../../redux/selectors";
+import { getText, getMode, getFont, getPadding } from "../../../redux/selectors";
+
 
 export const TextSideBar = () => {
   const dispatch = useDispatch();
   const textInputValue = useSelector(getText);
   const textMode = useSelector(getMode);
   const textFont = useSelector(getFont);
+  const textPadding = useSelector(getPadding)
 
   const handleTextChange = (event, action) => {
     dispatch({ type: action, payload: event.target.value });
@@ -29,11 +32,12 @@ export const TextSideBar = () => {
       <Styled.ColorSliderSection>
         <Styled.ColorLabel>Size</Styled.ColorLabel>
         <RangeSlider
-          sliderSize={50}
-          handleTextChange={handleTextChange}
           min="2"
           max="50"
           step="1"
+          actionName="SET_TEXT_SIZE"
+          sliderSize={50}
+          handleTextChange={handleTextChange}
         />
         <Styled.ColorPicker
           type="color"
@@ -43,23 +47,11 @@ export const TextSideBar = () => {
       </Styled.ColorSliderSection>
       <Styled.FontSection>
         <Styled.FontLabel>Font</Styled.FontLabel>
-        <Styled.FontSelect
-          onChange={(e) => handleTextChange(e, "SET_TEXT_FONT")}
+        <SelectColor
           textFont={textFont}
-        >
-          <option className="Hachi-Maru-Pop" value="East Sea Dokdo">
-            Hachi Maru Pop
-          </option>
-          <option className="Potta-One" value="Potta One">
-            Potta One
-          </option>
-          <option className="East-Sea-Dokdo" value="East Sea Dokdo">
-            East Sea Dokdo
-          </option>
-          <option className="Montserrat" value="Montserrat">
-            Montserrat
-          </option>
-        </Styled.FontSelect>
+          actionName="SET_TEXT_FONT"
+          handleTextChange={handleTextChange}
+        />
       </Styled.FontSection>
       <Styled.TailedModeSection>
         <Styled.FontLabel>Tailed Mode</Styled.FontLabel>
@@ -70,7 +62,14 @@ export const TextSideBar = () => {
           <PositionBtns />
         ) : (
             <div className="padding">
-              <RangeSlider labelName="Padding" />
+              <RangeSlider
+                min="0"
+                max="10"
+                step="0.1"
+                labelName="Padding"
+                actionName={"SET_TEXT_PADDING"}
+                defaultValue={textPadding}
+                handleTextChange={handleTextChange} />
             </div>
           )}
       </Styled.PositionModeSection>

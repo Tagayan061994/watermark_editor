@@ -1,8 +1,9 @@
 import { createSelector } from "reselect";
+import { textConfigs } from "../reducers/textConfigs";
 export const getStore = (state) => state;
 
 export const getTextConfigs = createSelector(getStore, (state) => {
-    return state.textConfigs
+    return state.textConfigs;
 });
 export const getText = createSelector(
     getTextConfigs,
@@ -28,6 +29,7 @@ export const getPosition = createSelector(
     getTextConfigs,
     (textConfigs) => textConfigs.position
 );
-
-
-
+export const getPadding = createSelector(
+    getTextConfigs,
+    (textConfigs) => textConfigs.padding
+);

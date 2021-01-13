@@ -21,18 +21,18 @@ export const ImageSideBar = () => {
       <Styled.ModeSection>
         <Styled.Label>Tiled mode</Styled.Label>
         <ToggleButton
-          switchSingleToTiled={switchSingleToTiled}
           setSingleToTiled={setSingleToTiled}
+          switchSingleToTiled={switchSingleToTiled}
         />
       </Styled.ModeSection>
       <Styled.PositionSection>
         {switchSingleToTiled ? (
           <PositionBtns />
         ) : (
-          <Styled.SliderSection>
-            <RangeSlider labelName="Padding" />
-          </Styled.SliderSection>
-        )}
+            <Styled.SliderSection>
+              <RangeSlider labelName="Padding" />
+            </Styled.SliderSection>
+          )}
       </Styled.PositionSection>
     </Styled.ImageSideBarWrapper>
   );

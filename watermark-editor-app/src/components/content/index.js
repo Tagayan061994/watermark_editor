@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import * as Styled from "./style";
 import { useSelector } from "react-redux";
 import { ResizeableDiv } from "../../common/resizeableDiv";
@@ -9,29 +9,66 @@ import {
     getFont,
     getMode,
     getPosition,
+    getPadding,
 } from "../../redux/selectors";
 
 export const Content = () => {
-    const textInput = useSelector(getText);
     const textSize = useSelector(getSize);
-    const textColor = useSelector(getColor);
     const textFont = useSelector(getFont);
     const textMode = useSelector(getMode);
+    const textInput = useSelector(getText);
+    const textColor = useSelector(getColor);
+    const textPadding = useSelector(getPadding);
     const textPosition = useSelector(getPosition);
-    const parentRef = useRef(null);
+
+    const [multipleDivWidth, setmultipleDivWidth] = useState(null);
+    const [multipleDivHeight, setmultipleDivHeight] = useState(null);
+    const [numberOfResizableDiv, setNumberOfResizableDiv] = useState(0);
+
+    const renderSingleResizeDiv = () => {
+        return (
+            <ResizeableDiv
+                size={textSize}
+                font={textFont}
+                child={textInput}
+                color={textColor}
+                position={textPosition}
+                setmultipleDivWidth={setmultipleDivWidth}
+                setmultipleDivHeight={setmultipleDivHeight}
+                setNumberOfResizableDiv={setNumberOfResizableDiv}
+            />
+        );
+    };
+
+    const renderMultipleResizeDiv = (count) => {
+        let duplicateElementsArr = [];
+        for (let i = 0; i < count; i++) {
+            let el = (
+                <Styled.MultipleRenderedDiv
+                    key={i}
+                    size={textSize}
+                    font={textFont}
+                    color={textColor}
+                    padding={textPadding}
+                    width={multipleDivWidth}
+                    height={multipleDivHeight}
+                >
+                    {textInput}
+                </Styled.MultipleRenderedDiv>
+            );
+            duplicateElementsArr.push(el);
+        }
+        return duplicateElementsArr;
+    };
+
     return (
         <Styled.ContentWrapper>
-            <Styled.EditorDesk ref={parentRef}>
-                {textInput && (
-                    <ResizeableDiv
-                        child={textInput}
-                        size={textSize}
-                        color={textColor}
-                        font={textFont}
-                        position={textPosition}
-                        parentRef={parentRef}
-                    />
-                )}
+            <Styled.EditorDesk flex={!textMode && textInput ? true : false}>
+                {textMode && textInput
+                    ? renderSingleResizeDiv()
+                    : !textMode && textInput
+                        ? renderMultipleResizeDiv(numberOfResizableDiv)
+                        : null}
             </Styled.EditorDesk>
         </Styled.ContentWrapper>
     );
