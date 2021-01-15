@@ -19,15 +19,28 @@ export const EditorDesk = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   display: ${(props) => (props.flex ? "flex" : "block")};
-  flex-wrap: ${(props) => (props.flex ? "wrap" : "nowrap")};
   justify-content: ${(props) => (props.flex ? "space-around" : null)};
+  flex-wrap: ${(props) => (props.flex ? "wrap" : "nowrap")};
 `;
 
-export const MultipleRenderedDiv = styled.div`
+export const MultipleRenderedTextWrapper = styled.div`
   color: ${(props) => `${props.color}` || "black"};
-  width:  ${(props) => `${props.width}px` || "10px"};
-  height:  ${(props) => `${props.height}px` || "10px"};
+  margin: ${(props) => `0 ${props.padding}%` || "0"};
+  width: ${(props) => `${props.width}px` || "10px"};
+  height: ${(props) => `${props.height}px` || "10px"};
   font-size: ${(props) => `${props.size}px` || "10px"};
   font-family: ${(props) => `${props.font}` || "Monnserat"};
-  padding: ${(props) => `0 ${props.padding}%` || "0"};
+`;
+
+export const MultipleRenderedImgWrapper = styled.div`
+  width: ${(props) => `${props.width}px` || "50px"};
+  height: ${(props) => `${props.height}px` || "50px"};
+  margin: ${(props) => `0 ${props.padding}%` || "0 10"};
+  object-fit: cover;
+`;
+
+export const MultipleRenderedImg = styled.img`
+  height: 100%;
+  width: 100%;
+  opacity: ${(props) => (props.imageOpacity ? props.imageOpacity : 1)};
 `;

@@ -7,7 +7,7 @@ export const getTextConfigs = createSelector(getStore, (state) => {
 });
 export const getText = createSelector(
     getTextConfigs,
-    (textConfigs) => textConfigs.text
+    (textConfigs) => textConfigs.value
 );
 export const getSize = createSelector(
     getTextConfigs,
@@ -32,4 +32,12 @@ export const getPosition = createSelector(
 export const getPadding = createSelector(
     getTextConfigs,
     (textConfigs) => textConfigs.padding
+);
+export const getType = createSelector(
+    getTextConfigs,
+    (textConfigs) => textConfigs.type
+);
+export const getOpacity = createSelector(
+    getTextConfigs,
+    (textConfigs) => textConfigs.opacity
 );

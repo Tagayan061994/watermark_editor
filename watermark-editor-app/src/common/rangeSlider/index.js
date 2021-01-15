@@ -5,7 +5,7 @@ export const RangeSlider = React.memo(
   ({
     labelName = false,
     sliderSize = 95,
-    handleTextChange,
+    handleChange,
     actionName,
     min = "0",
     max = "10",
@@ -14,7 +14,7 @@ export const RangeSlider = React.memo(
   }) => {
     return (
       <>
-        {labelName ? <Styled.ColorLabel>{labelName}</Styled.ColorLabel> : null}
+        {labelName ? <Styled.Label>{labelName}</Styled.Label> : null}
         <Styled.SizeSlider
           sliderSize={sliderSize}
           type="range"
@@ -22,7 +22,7 @@ export const RangeSlider = React.memo(
           max={max}
           step={step}
           defaultValue={defaultValue}
-          onChange={(e) => handleTextChange(e, actionName)}
+          onChange={(e) => handleChange(e, actionName)}
         />
       </>
     );

@@ -1,24 +1,22 @@
 import React from "react";
 import { MainWrapper } from "./style";
+import { useSelector } from "react-redux";
 import { Content } from "../content/index";
+import { getType } from "../../redux/selectors";
 import { TextSideBar } from "../sidbar/textSideBar";
 import { ImageSideBar } from "../sidbar/imageSideBar";
 import { DefaultSideBar } from "../sidbar/defaultSideBar";
-import { SideBar } from "../sidbar/defaultSideBar/style";
-export const Main = ({
-  defaultSidebar,
-  imgSidebar,
-  textSidebar,
-  switchToSidebar,
-}) => {
+
+export const Main = () => {
+  const sideBarType = useSelector(getType);
+
   return (
     <MainWrapper>
       <>
-        {defaultSidebar ? (
-          <DefaultSideBar switchToSidebar={switchToSidebar} />
-        ) : null}
-        {imgSidebar ? <ImageSideBar /> : null}
-        {textSidebar ? <TextSideBar /> : null}
+        {sideBarType === "" ? <DefaultSideBar />
+          : sideBarType === "image" ? <ImageSideBar /> :
+            sideBarType === "text" ? <TextSideBar /> : null
+        }
       </>
       <Content />
     </MainWrapper>

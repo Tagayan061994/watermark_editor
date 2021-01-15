@@ -3,7 +3,7 @@ import * as Styled from "./style";
 import { useDispatch } from "react-redux";
 
 export const PositionBtns = React.memo(() => {
-  const [data, setdata] = useState([
+  const [data, setData] = useState([
     {
       degree: 0,
       params: {
@@ -44,7 +44,7 @@ export const PositionBtns = React.memo(() => {
   const dispatch = useDispatch();
 
   const handlePositionChange = (item, positions) => {
-    let updateData = data.map((data) => {
+    let updatedData = data.map((data) => {
       if (data.id === item.id) {
         data.clicked = true;
       } else {
@@ -52,8 +52,8 @@ export const PositionBtns = React.memo(() => {
       }
       return data;
     });
-    setdata(updateData);
-    dispatch({ type: "SET_TEXT_POSITION", payload: positions });
+    setData(updatedData);
+    dispatch({ type: "SET_POSITION", payload: positions });
   };
 
   return (

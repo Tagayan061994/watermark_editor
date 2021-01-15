@@ -3,7 +3,6 @@
   padding: 0 0 0 0;
   box-sizing: border-box;
 }
-
 @import url("https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Potta+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap");
@@ -34,5 +33,10 @@ input[type="file"] {
 }
 
 input {
+  outline: none;
+}
+
+input[type="range"] {
+  -webkit-border-before-color: transparent;
   outline: none;
 }

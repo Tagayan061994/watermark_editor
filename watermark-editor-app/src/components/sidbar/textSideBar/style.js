@@ -24,7 +24,7 @@ export const InputSection = styled.div`
 `;
 
 export const TextInput = styled.input`
-  height:100%;
+  height: 100%;
   border: 1px solid #387dff;
   background-color: #eef5ff;
   color: #0d2053;
@@ -88,7 +88,6 @@ export const FontSection = styled.div`
 
 export const FontLabel = styled.label`
   font-size: 12px;
-  font-family: "Montserrat-Medium";
   text-align: left;
   color: #7683a8;
   align-self: center;
@@ -146,8 +145,8 @@ export const PositionModeSection = styled.div`
   flex-direction: column;
   justify-content: space-around;
   .padding {
-    padding-bottom: 9%;
-    padding-top: 1.5%;
+    padding-bottom: 13%;
+    padding-top: 3.6%;
     display: flex;
     flex-direction: column;
     justify-content: center;
